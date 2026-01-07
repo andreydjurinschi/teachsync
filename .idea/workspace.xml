@@ -4,32 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="774e3073-968e-4619-aaa6-db66bcfd0b51" name="Changes" comment="user service init">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="774e3073-968e-4619-aaa6-db66bcfd0b51" name="Changes" comment="user service base methods created">
       <change afterPath="$PROJECT_DIR$/users-service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/advice/CustomExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/user/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/domain/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserBaseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserCreateUpdateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/utils/JacksonModuleRegistrator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/utils/LiquibaseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/utils/PasswordUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/resources/application-docker.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/resources/application-local.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/resources/changelog/changeset/001-insert-10-users.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/resources/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserUpdateDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserCreateUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +105,11 @@
     "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "application.passwordSafe",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -186,7 +174,9 @@
       <workItem from="1763450257277" duration="6000" />
       <workItem from="1767471897817" duration="346000" />
       <workItem from="1767476929324" duration="74000" />
-      <workItem from="1767477010313" duration="7492000" />
+      <workItem from="1767477010313" duration="7625000" />
+      <workItem from="1767777341589" duration="1481000" />
+      <workItem from="1767797854272" duration="2515000" />
     </task>
     <task id="LOCAL-00001" summary="user service init">
       <option name="closed" value="true" />
@@ -196,11 +186,32 @@
       <option name="project" value="LOCAL" />
       <updated>1767477070670</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="user service base methods created">
+      <option name="closed" value="true" />
+      <created>1767484615958</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1767484615958</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.kafka:kafka_2.13" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -221,6 +232,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="user service init" />
-    <option name="LAST_COMMIT_MESSAGE" value="user service init" />
+    <MESSAGE value="user service base methods created" />
+    <option name="LAST_COMMIT_MESSAGE" value="user service base methods created" />
   </component>
 </project>

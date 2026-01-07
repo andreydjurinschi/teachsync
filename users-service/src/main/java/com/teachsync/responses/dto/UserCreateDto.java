@@ -3,11 +3,12 @@ package com.teachsync.responses.dto;
 import com.teachsync.domain.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-public class UserCreateUpdateDto {
+public class UserCreateDto {
 
     @NotEmpty
     @Size(min = 2, max = 40, message = "invalid value for name")
@@ -26,14 +27,13 @@ public class UserCreateUpdateDto {
     @Email
     private String email;
 
-
-    @NotEmpty
+    @NotNull
     private LocalDate registeredAt;
 
-    @NotEmpty(message = "role cannot be null or empty")
+    @NotNull(message = "role cannot be null or empty")
     private Role role;
 
-    public UserCreateUpdateDto(String name, String surname, String password, String email, LocalDate registeredAt, Role role) {
+    public UserCreateDto(String name, String surname, String password, String email, LocalDate registeredAt, Role role) {
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -58,7 +58,7 @@ public class UserCreateUpdateDto {
         this.password = password;
     }
 
-    public UserCreateUpdateDto() {
+    public UserCreateDto() {
     }
 
     public String getName() {
