@@ -10,6 +10,7 @@ import com.teachsync.utils.PasswordUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,11 @@ public class UserService {
 
     @Transactional
     public void updateUser(Long id, UserUpdateDto dto) {
-
         User user = repository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("User not found"));
-        if (dto.getName() != null) user.setName(dto.getName());
-        if (dto.getSurname() != null) user.setSurname(dto.getSurname());
-        if (dto.getEmail() != null) user.setEmail(dto.getEmail());
+        if (StringUtils.hasText(dto.getName())) user.setName(dto.getName());
+        if (StringUtils.hasText(dto.getSurname())) user.setSurname(dto.getSurname());
+        if (StringUtils.hasText(dto.getEmail())) user.setEmail(dto.getEmail());
     }
 
     @Transactional
