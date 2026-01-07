@@ -1,0 +1,16 @@
+INSERT INTO topics (name) VALUES
+('OOP'),
+('Data Structures'),
+('Algorithms'),
+('SQL'),
+('NoSQL'),
+('REST APIs'),
+('Security'),
+('Testing'),
+('CI/CD'),
+('Cloud Computing'),
+('DevOps'),
+('Frontend'),
+('Backend'),
+('Design Patterns'),
+('Networking');

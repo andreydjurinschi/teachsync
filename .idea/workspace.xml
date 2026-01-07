@@ -4,15 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="774e3073-968e-4619-aaa6-db66bcfd0b51" name="Changes" comment="user service base methods created">
-      <change afterPath="$PROJECT_DIR$/users-service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserUpdateDto.java" afterDir="false" />
+    <list default="true" id="774e3073-968e-4619-aaa6-db66bcfd0b51" name="Changes" comment="course-service init">
+      <change afterPath="$PROJECT_DIR$/course-service/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/controllers/CourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/controllers/advice/ControllerExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/domain/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/domain/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/domain/Topic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/mappers/CourseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/repositories/CourseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/repositories/GroupRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/repositories/TopicRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/responses/dto_s/CourseUpdateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/responses/dto_s/course/CourseBaseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/responses/dto_s/course/CourseCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/services/CourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/java/com/teachsync/courseservice/utils/LiquibaseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/application-local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/changelog/changeset/001-insert-data-into-courses-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/changelog/changeset/002-insert-data-into-groups-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/changelog/changeset/003-insert-data-into-topics-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/changelog/changeset/004-insert-data-into-intermediate-tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-service/src/main/resources/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserCreateUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/responses/dto/UserCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/java/com/teachsync/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/resources/application-docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/resources/application-docker.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/users-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +66,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="features/user-service" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,50 +96,53 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Maven.user-service [clean].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.CourseApplication.executor": "Run",
-    "Spring Boot.UsersServiceApplication.executor": "Run",
-    "git-widget-placeholder": "user-service",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/djuri/IdeaProjects/TeachSyncApp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "application.passwordSafe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Maven.TeachSyncApp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CourseApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CourseServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UsersServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;features/course-service&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/djuri/IdeaProjects/TeachSyncApp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;application.passwordSafe&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.teachsync.courseservice.responses.dto_s" />
+      <recent name="com.teachsync.courseservice.mappers" />
+      <recent name="com.teachsync.courseservice.responses.dto_s.course" />
       <recent name="com.teachsync.responses.dto." />
       <recent name="com.teachsync.responses.dto" />
-      <recent name="com.teachsync.domain" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.teachsync" />
@@ -132,7 +158,25 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.CourseServiceApplication">
+    <configuration name="CourseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="course-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.teachsync.courseservice.CourseServiceApplication" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UsersServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="users-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.teachsync.UsersServiceApplication" />
@@ -151,6 +195,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CourseServiceApplication" />
+      <item itemvalue="Spring Boot.UsersServiceApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -176,7 +224,8 @@
       <workItem from="1767476929324" duration="74000" />
       <workItem from="1767477010313" duration="7625000" />
       <workItem from="1767777341589" duration="1481000" />
-      <workItem from="1767797854272" duration="2515000" />
+      <workItem from="1767797854272" duration="11096000" />
+      <workItem from="1767814240634" duration="3658000" />
     </task>
     <task id="LOCAL-00001" summary="user service init">
       <option name="closed" value="true" />
@@ -194,7 +243,23 @@
       <option name="project" value="LOCAL" />
       <updated>1767484615958</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="user service basic methods created">
+      <option name="closed" value="true" />
+      <created>1767802025381</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1767802025381</updated>
+    </task>
+    <task id="LOCAL-00004" summary="user service basic methods created">
+      <option name="closed" value="true" />
+      <created>1767802040913</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1767802040913</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +298,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="user service init" />
     <MESSAGE value="user service base methods created" />
-    <option name="LAST_COMMIT_MESSAGE" value="user service base methods created" />
+    <MESSAGE value="user service basic methods created" />
+    <option name="LAST_COMMIT_MESSAGE" value="user service basic methods created" />
   </component>
 </project>
