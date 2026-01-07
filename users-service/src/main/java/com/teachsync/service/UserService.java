@@ -4,7 +4,8 @@ import com.teachsync.domain.User;
 import com.teachsync.mapper.UserMapper;
 import com.teachsync.repository.UserRepository;
 import com.teachsync.responses.dto.UserBaseDto;
-import com.teachsync.responses.dto.UserCreateUpdateDto;
+import com.teachsync.responses.dto.UserCreateDto;
+import com.teachsync.responses.dto.UserUpdateDto;
 import com.teachsync.utils.PasswordUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,31 +34,30 @@ public class UserService {
 
     public UserBaseDto findById(Long id){
         User user = repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Given user does not exist"));
+                .orElseThrow(() -> new NoSuchElementException("This user does not exist"));
         return UserMapper.mapToBaseDto(user);
     }
 
     @Transactional
-    public void createUser(UserCreateUpdateDto dto){
+    public void createUser(UserCreateDto dto){
         User user = UserMapper.mapToUser(dto);
         user.setPassword(PasswordUtils.hash(user.getPassword()));
         repository.save(user);
     }
 
     @Transactional
-    public void updateUser(Long id, UserCreateUpdateDto dto) {
+    public void updateUser(Long id, UserUpdateDto dto) {
 
         User user = repository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("User not found"));
-
         if (dto.getName() != null) user.setName(dto.getName());
         if (dto.getSurname() != null) user.setSurname(dto.getSurname());
         if (dto.getEmail() != null) user.setEmail(dto.getEmail());
-        if (dto.getRole() != null) user.setRole(dto.getRole());
-        if (dto.getRegisteredAt() != null) user.setRegisteredAt(dto.getRegisteredAt());
+    }
 
-        if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
-            user.setPassword(PasswordUtils.hash(dto.getPassword()));
-        }
+    @Transactional
+    public void deleteUser(Long id){
+        User user = repository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
+        repository.delete(user);
     }
 }
