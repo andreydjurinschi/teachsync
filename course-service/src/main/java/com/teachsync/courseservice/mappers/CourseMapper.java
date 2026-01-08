@@ -1,8 +1,8 @@
 package com.teachsync.courseservice.mappers;
 
 import com.teachsync.courseservice.domain.Course;
-import com.teachsync.courseservice.responses.dto_s.course.CourseBaseDto;
-import com.teachsync.courseservice.responses.dto_s.course.CourseCreateDto;
+import com.teachsync.courseservice.requests.dto_s.course.CourseBaseDto;
+import com.teachsync.courseservice.requests.dto_s.course.CourseCreateDto;
 
 public class CourseMapper {
 

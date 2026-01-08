@@ -1,9 +1,9 @@
 package com.teachsync.courseservice.controllers;
 
-import com.teachsync.courseservice.responses.dto_s.CourseUpdateDto;
-import com.teachsync.courseservice.responses.dto_s.course.CourseBaseDto;
-import com.teachsync.courseservice.responses.dto_s.course.CourseCreateDto;
-import com.teachsync.courseservice.services.CourseService;
+import com.teachsync.courseservice.requests.dto_s.course.CourseUpdateDto;
+import com.teachsync.courseservice.requests.dto_s.course.CourseBaseDto;
+import com.teachsync.courseservice.requests.dto_s.course.CourseCreateDto;
+import com.teachsync.courseservice.services.domain.CourseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +31,11 @@ public class CourseController {
     @GetMapping("/{id}")
     public ResponseEntity<CourseBaseDto> findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(courseService.findById(id));
+    }
+
+    @GetMapping("/checkUser/{id}")
+    public ResponseEntity<String> checkTeacher(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(courseService.findUserTest(id));
     }
 
     @PutMapping("/edit/{id}")
