@@ -1,18 +1,21 @@
-package com.teachsync.courseservice.responses.dto_s;
+package com.teachsync.courseservice.requests.dto_s.course;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
-public class CourseUpdateDto {
+public class CourseCreateDto {
 
+    @NotEmpty
     @Size(min = 5, max = 50, message = "name length needs to be between 5-50 characters")
     private String name;
 
+    @NotEmpty
     @Size(min = 15, max = 200, message = "description length needs to be between 15-200 characters")
     private String description;
 
     private String photoUrl;
 
-    public CourseUpdateDto(String name, String description, String photoUrl) {
+    public CourseCreateDto(String name, String description, String photoUrl) {
         this.name = name;
         this.description = description;
         this.photoUrl = photoUrl;

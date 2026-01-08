@@ -1,4 +1,4 @@
-package com.teachsync.courseservice.responses.dto_s.course;
+package com.teachsync.courseservice.requests.dto_s.course;
 
 public class CourseBaseDto {
     private String name;
@@ -12,7 +12,6 @@ public class CourseBaseDto {
         this.photoUrl = photoUrl;
         this.teacher = teacher;
     }
-
 
     public String getPhotoUrl() {
         return photoUrl;
