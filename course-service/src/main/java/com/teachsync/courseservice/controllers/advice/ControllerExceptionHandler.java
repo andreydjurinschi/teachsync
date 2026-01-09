@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
+    public ResponseEntity<Map<String, String>> handleMethodArgumentNotValidError(MethodArgumentNotValidException e){
         Map<String, String> errors = new HashMap<>();
         e.getBindingResult().getFieldErrors().forEach(
                 error -> {
@@ -24,8 +25,26 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<String> handleNoSuchEntityException(NoSuchElementException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
     @ExceptionHandler(FeignException.NotFound.class)
-    public ResponseEntity<String> handleFeignNotFoundException(FeignException.NotFound e){
+    public ResponseEntity<String> handleFeignNotFoundError(FeignException.NotFound e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getLocalizedMessage());
+    }
+
+    @ExceptionHandler(FeignException.class)
+    public ResponseEntity<?> handleUserServiceError() {
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body("User service unavailable");
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> handleIllegalArgumentError(IllegalArgumentException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getLocalizedMessage());
     }
 }
