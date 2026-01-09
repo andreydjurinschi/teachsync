@@ -3,12 +3,11 @@ package com.teachsync.courseservice.services.domain;
 import com.teachsync.courseservice.domain.Course;
 import com.teachsync.courseservice.mappers.CourseMapper;
 import com.teachsync.courseservice.repositories.CourseRepository;
-import com.teachsync.courseservice.requests.dto_s.course.CourseUpdateDto;
-import com.teachsync.courseservice.requests.dto_s.course.CourseBaseDto;
-import com.teachsync.courseservice.requests.dto_s.course.CourseCreateDto;
-import com.teachsync.courseservice.requests.feign.Role;
-import com.teachsync.courseservice.requests.feign.UserHttpResponse;
+import com.teachsync.courseservice.requests.feign.TeacherCheckResponse;
 import com.teachsync.courseservice.services.feign.UserClient;
+import com.teachsync.dto_s.course.CourseUpdateDto;
+import com.teachsync.dto_s.course.CourseBaseDto;
+import com.teachsync.dto_s.course.CourseCreateDto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,9 +35,7 @@ public class CourseService {
     }
 
     public CourseBaseDto findById(Long id){
-        Course course = repository
-                .findById(id)
-                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+        Course course = getCourse(id);
         return CourseMapper.mapToBaseDto(course);
     }
 
@@ -50,9 +47,7 @@ public class CourseService {
 
     @Transactional
     public void updateCourse(Long id, CourseUpdateDto dto){
-        Course course = repository.findById(id).orElseThrow(
-                () -> new NoSuchElementException("this course does not exist")
-        );
+       Course course = getCourse(id);
         if(StringUtils.hasText(dto.getName())){
             course.setName(dto.getName());
         }
@@ -66,21 +61,33 @@ public class CourseService {
 
     @Transactional
     public void deleteCourse(Long id){
-        Course course = repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+        Course course = getCourse(id);
         repository.delete(course);
     }
 
-    public String findUserTest(Long id){
-        StringBuilder res = new StringBuilder();
-        UserHttpResponse resp = userClient.checkUserExists(id);
-        if(resp.getRole() != Role.TEACHER){
-            res.append(String.format("User %s is not a teacher, he is %s", resp.getFullName(), resp.getRole().toString()));
-        }else {
-            res.append(String.format("User %s is a teacher, his email is %s", resp.getFullName(), resp.getEmail()));
-        }
-        return res.toString();
+    private Course getCourse(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
     }
+
+
+    @Transactional
+    public void assignTeacherToCourse(Long courseId, Long userId) {
+        // убеждаемся, что курс существует
+        repository.findById(courseId)
+                .orElseThrow(() -> new NoSuchElementException("course not found: " + courseId));
+
+        TeacherCheckResponse response = userClient.isTeacher(userId);
+        if (response == null || !response.isTeacher()) {
+            throw new IllegalArgumentException("this user is not a teacher");
+        }
+
+        int updated = repository.addTeacherForCourse(courseId, userId);
+        if (updated == 0) {
+            throw new IllegalStateException("no rows updated; check table/column names, schema, or constraints");
+        }
+    }
+
 
 
 }

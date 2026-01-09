@@ -1,4 +1,4 @@
-package com.teachsync.controller.user;
+package com.teachsync.controller.domain;
 
 import com.teachsync.responses.dto.UserBaseDto;
 import com.teachsync.responses.dto.UserCreateDto;

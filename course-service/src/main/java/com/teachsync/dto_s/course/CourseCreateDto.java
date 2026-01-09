@@ -1,4 +1,4 @@
-package com.teachsync.courseservice.requests.dto_s.course;
+package com.teachsync.dto_s.course;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
