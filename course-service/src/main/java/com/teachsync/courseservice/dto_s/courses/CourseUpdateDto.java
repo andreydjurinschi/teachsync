@@ -1,4 +1,4 @@
-package com.teachsync.dto_s.course;
+package com.teachsync.courseservice.dto_s.courses;
 
 import jakarta.validation.constraints.Size;
 

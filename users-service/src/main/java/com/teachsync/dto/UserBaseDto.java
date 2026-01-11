@@ -1,4 +1,4 @@
-package com.teachsync.responses.dto;
+package com.teachsync.dto;
 
 import com.teachsync.domain.Role;
 

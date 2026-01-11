@@ -1,8 +1,9 @@
-package com.teachsync.courseservice.controllers;
+package com.teachsync.courseservice.controllers.domain;
 
-import com.teachsync.dto_s.course.CourseUpdateDto;
-import com.teachsync.dto_s.course.CourseBaseDto;
-import com.teachsync.dto_s.course.CourseCreateDto;
+import com.teachsync.courseservice.dto_s.courses.CourseDetailedDto;
+import com.teachsync.courseservice.dto_s.courses.CourseUpdateDto;
+import com.teachsync.courseservice.dto_s.courses.CourseBaseDto;
+import com.teachsync.courseservice.dto_s.courses.CourseCreateDto;
 import com.teachsync.courseservice.services.domain.CourseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,13 +52,19 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
     }
 
+    @GetMapping("/{id}/info")
+    public ResponseEntity<CourseDetailedDto> getCourseFullInfo(@PathVariable Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK).body(courseService.getAllCourseData(id));
+    }
 
 
+
+    // feign
     @PutMapping("/assign/{courseId}/{teacherId}")
     public ResponseEntity<Void> isTeacher(@PathVariable("courseId") Long courseId, @PathVariable("teacherId") Long teacherId){
         courseService.assignTeacherToCourse(courseId, teacherId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
     // kafka requests
 }
