@@ -1,14 +1,14 @@
 package com.teachsync.courseservice.services.domain;
 
 import com.teachsync.courseservice.domain.Course;
+import com.teachsync.courseservice.dto_s.courses.CourseDetailedDto;
 import com.teachsync.courseservice.interaction.UserClient;
 import com.teachsync.courseservice.mappers.CourseMapper;
 import com.teachsync.courseservice.repositories.CourseRepository;
-import com.teachsync.courseservice.requests.feign.TeacherCheckResponse;
-import com.teachsync.courseservice.requests.feign.UserTeacherRequest;
-import com.teachsync.dto_s.course.CourseUpdateDto;
-import com.teachsync.dto_s.course.CourseBaseDto;
-import com.teachsync.dto_s.course.CourseCreateDto;
+import com.teachsync.courseservice.interaction.requests.feign.TeacherCheckResponse;
+import com.teachsync.courseservice.dto_s.courses.CourseUpdateDto;
+import com.teachsync.courseservice.dto_s.courses.CourseBaseDto;
+import com.teachsync.courseservice.dto_s.courses.CourseCreateDto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,12 +66,12 @@ public class CourseService {
         repository.delete(course);
     }
 
-    private Course getCourse(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+    public CourseDetailedDto getAllCourseData(Long id){
+        Course course = getCourse(id);
+        return CourseMapper.mapToDetailedDto(course);
     }
 
-
+    // interaction consumer
     @Transactional
     public void assignTeacherToCourse(Long courseId, Long userId) {
         Course course = repository.findById(courseId)
@@ -84,6 +84,18 @@ public class CourseService {
         course.setTeacherId(userId);
     }
 
+    // interaction producer
+
+    public List<CourseBaseDto> getAllForUser(Long userId){
+        List<Course> courses = repository.getAllByTeacher(userId);
+        return courses
+                .stream().map(CourseMapper::mapToBaseDto).toList();
+    }
+
+    private Course getCourse(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+    }
 
 
 }
