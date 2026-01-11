@@ -9,7 +9,7 @@ public class CourseMapper {
     //TODO: null till teacher verification logic is not created
     public static CourseBaseDto mapToBaseDto(Course course) {
         return new CourseBaseDto(
-                course.getName(), course.getDescription(), course.getPhotoUrl(), null
+                course.getName(), course.getDescription(), course.getPhotoUrl(), course.getId()
         );
     }
 

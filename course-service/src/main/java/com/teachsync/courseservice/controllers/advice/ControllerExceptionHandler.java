@@ -34,13 +34,6 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getLocalizedMessage());
     }
 
-    @ExceptionHandler(FeignException.class)
-    public ResponseEntity<?> handleUserServiceError() {
-        return ResponseEntity
-                .status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body("User service unavailable");
-    }
-
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleIllegalArgumentError(IllegalArgumentException e) {
         return ResponseEntity

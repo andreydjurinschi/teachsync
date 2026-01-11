@@ -1,10 +1,11 @@
 package com.teachsync.courseservice.services.domain;
 
 import com.teachsync.courseservice.domain.Course;
+import com.teachsync.courseservice.interaction.UserClient;
 import com.teachsync.courseservice.mappers.CourseMapper;
 import com.teachsync.courseservice.repositories.CourseRepository;
 import com.teachsync.courseservice.requests.feign.TeacherCheckResponse;
-import com.teachsync.courseservice.services.feign.UserClient;
+import com.teachsync.courseservice.requests.feign.UserTeacherRequest;
 import com.teachsync.dto_s.course.CourseUpdateDto;
 import com.teachsync.dto_s.course.CourseBaseDto;
 import com.teachsync.dto_s.course.CourseCreateDto;
@@ -73,19 +74,14 @@ public class CourseService {
 
     @Transactional
     public void assignTeacherToCourse(Long courseId, Long userId) {
-        // убеждаемся, что курс существует
-        repository.findById(courseId)
+        Course course = repository.findById(courseId)
                 .orElseThrow(() -> new NoSuchElementException("course not found: " + courseId));
 
         TeacherCheckResponse response = userClient.isTeacher(userId);
-        if (response == null || !response.isTeacher()) {
+        if (!response.isTeacher()) {
             throw new IllegalArgumentException("this user is not a teacher");
         }
-
-        int updated = repository.addTeacherForCourse(courseId, userId);
-        if (updated == 0) {
-            throw new IllegalStateException("no rows updated; check table/column names, schema, or constraints");
-        }
+        course.setTeacherId(userId);
     }
 
 

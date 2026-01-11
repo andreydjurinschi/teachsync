@@ -4,9 +4,9 @@ public class CourseBaseDto {
     private String name;
     private String description;
     private String photoUrl;
-    private String teacher;
+    private Long teacher;
 
-    public CourseBaseDto(String name, String description, String photoUrl, String teacher) {
+    public CourseBaseDto(String name, String description, String photoUrl, Long teacher) {
         this.name = name;
         this.description = description;
         this.photoUrl = photoUrl;
@@ -37,11 +37,11 @@ public class CourseBaseDto {
         this.description = description;
     }
 
-    public String getTeacher() {
+    public Long getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Long teacher) {
         this.teacher = teacher;
     }
 }
