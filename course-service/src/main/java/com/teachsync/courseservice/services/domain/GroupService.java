@@ -9,6 +9,7 @@ import com.teachsync.courseservice.dto_s.groups.GroupUpdateDto;
 import com.teachsync.courseservice.dto_s.groups.GroupWithCoursesDto;
 import com.teachsync.courseservice.mappers.CourseMapper;
 import com.teachsync.courseservice.mappers.GroupMapper;
+import com.teachsync.courseservice.repositories.CourseRepository;
 import com.teachsync.courseservice.repositories.GroupRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,11 @@ import java.util.stream.Collectors;
 @Service
 public class GroupService {
     private final GroupRepository repository;
+    private final CourseRepository courseRepository;
 
-    public GroupService(GroupRepository repository) {
+    public GroupService(GroupRepository repository, CourseRepository courseRepository) {
         this.repository = repository;
+        this.courseRepository = courseRepository;
     }
 
     public List<GroupBaseDto> getAll(){
@@ -53,13 +56,21 @@ public class GroupService {
         repository.save(group);
     }
 
+    @Transactional
+    public void assignGroupToCourse(Long groupId, Long courseId) {
+        getGroup(groupId);
+        courseRepository.findById(courseId)
+                .orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+        repository.assignGroupToCourse(groupId, courseId);
+    }
+
     public void delete(Long id){
         Group group = getGroup(id);
         repository.delete(group);
     }
 
     // relations
-    public GroupWithCoursesDto getDetailedDto(Long id){
+/*    public GroupWithCoursesDto getDetailedDto(Long id){
         Group group = getGroup(id);
         Set<Course> groupCourses = group.getCourses();
         Set<CourseShortDto> shortDtosSet = new HashSet<>();
@@ -69,6 +80,22 @@ public class GroupService {
         GroupWithCoursesDto groupWithCoursesDto = GroupMapper.mapToDetailedDto(group);
         groupWithCoursesDto.setCourses(shortDtosSet);
         return groupWithCoursesDto;
+    }*/
+
+    public GroupWithCoursesDto getDetailedDto(Long id){
+        Group group = repository.findWithCourses(id);
+        if(group == null){
+            throw new NoSuchElementException("this group does not exist");
+        }
+        Set<Course> groupCourses = group.getCourses();
+        Set<CourseShortDto> shortDtosSet = new HashSet<>();
+        if(!groupCourses.isEmpty()){
+            shortDtosSet = groupCourses.stream().map(CourseMapper::mapToShortDto).collect(Collectors.toSet());
+        }
+
+        GroupWithCoursesDto dto = GroupMapper.mapToDetailedDto(group);
+        dto.setCourses(shortDtosSet);
+        return dto;
     }
 
 
