@@ -49,4 +49,12 @@ public class GroupController {
         groupService.create(dto);
         return ResponseEntity.ok(String.format("Group %s was successfully created. Open date is %s", dto.getName(), dto.getOpenDate()));
     }
+
+
+    @PostMapping("/assign-to-course/{groupId}/{courseId}")
+    public ResponseEntity<Void> assignToCourse(@PathVariable("groupId") Long groupId, @PathVariable("courseId") Long courseId) {
+        groupService.assignGroupToCourse(groupId, courseId);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -9,6 +9,7 @@ import com.teachsync.courseservice.interaction.requests.feign.TeacherCheckRespon
 import com.teachsync.courseservice.dto_s.courses.CourseUpdateDto;
 import com.teachsync.courseservice.dto_s.courses.CourseBaseDto;
 import com.teachsync.courseservice.dto_s.courses.CourseCreateDto;
+import com.teachsync.courseservice.repositories.TopicRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,13 @@ import java.util.stream.Collectors;
 public class CourseService {
 
     private final CourseRepository repository;
+    private final TopicRepository topicRepository;
     private final UserClient userClient;
 
     @Autowired
-    public CourseService(CourseRepository repository, UserClient userClient) {
+    public CourseService(CourseRepository repository, TopicRepository topicRepository, UserClient userClient) {
         this.repository = repository;
+        this.topicRepository = topicRepository;
         this.userClient = userClient;
     }
 
@@ -66,8 +69,18 @@ public class CourseService {
         repository.delete(course);
     }
 
+    @Transactional
+    public void assignTopicToCourse(Long courseId, Long topicId){
+        repository.findById(courseId).orElseThrow(() -> new NoSuchElementException("this course does not exist"));
+        topicRepository.findById(topicId).orElseThrow(() -> new NoSuchElementException("this topic does not exist"));
+        repository.assignTopicToCourse(courseId, topicId);
+    }
+
     public CourseDetailedDto getAllCourseData(Long id){
-        Course course = getCourse(id);
+        Course course = repository.getCourseWithFullData(id);
+        if(course==null){
+            throw new NoSuchElementException("this course does not exist");
+        }
         return CourseMapper.mapToDetailedDto(course);
     }
 

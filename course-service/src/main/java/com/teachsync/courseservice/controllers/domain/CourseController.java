@@ -57,9 +57,14 @@ public class CourseController {
         return ResponseEntity
                 .status(HttpStatus.OK).body(courseService.getAllCourseData(id));
     }
-
-
-
+    
+    @PostMapping("/assign-topic/{courseId}/{topicId}")
+    public ResponseEntity<Void> assignTopicToCourse(@PathVariable("courseId") Long courseId, @PathVariable("topicId") Long topicId){
+        courseService.assignTopicToCourse(courseId, topicId);
+        return ResponseEntity
+                .status(HttpStatus.CREATED).body(null);
+    }
+    
     // feign
     @PutMapping("/assign/{courseId}/{teacherId}")
     public ResponseEntity<Void> isTeacher(@PathVariable("courseId") Long courseId, @PathVariable("teacherId") Long teacherId){

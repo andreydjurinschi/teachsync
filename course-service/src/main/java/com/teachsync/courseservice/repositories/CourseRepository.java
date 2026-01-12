@@ -2,6 +2,7 @@ package com.teachsync.courseservice.repositories;
 
 import com.teachsync.courseservice.domain.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -17,4 +18,9 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             " join group_courses gc on gc.course_id = c.id " +
             " where c.id = :course_id", nativeQuery = true)
     Course getCourseWithFullData(@Param("course_id") Long courseId);
+
+    @Modifying
+    @Query(nativeQuery = true, value = "insert into COURSE_TOPICS ( COURSE_ID, TOPIC_ID ) " +
+            "values ( :course_id, :topic_id )")
+    void assignTopicToCourse(@Param("course_id") Long course_id, @Param("topic_id") Long topic_id );
 }
