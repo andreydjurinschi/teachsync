@@ -78,7 +78,7 @@ public class CourseService {
                 .orElseThrow(() -> new NoSuchElementException("course not found: " + courseId));
 
         TeacherCheckResponse response = userClient.isTeacher(userId);
-        if (!response.isTeacher()) {
+        if (response == null || !response.isTeacher()) {
             throw new IllegalArgumentException("this user is not a teacher");
         }
         course.setTeacherId(userId);
