@@ -1,6 +1,6 @@
 package com.teachsync.courseservice.dto_s.courses;
 
-import com.teachsync.courseservice.dto_s.groups.GroupBaseDto;
+import com.teachsync.courseservice.dto_s.groups.GroupShortDto;
 import com.teachsync.courseservice.dto_s.topics.TopicBaseDto;
 
 import java.util.Set;
@@ -10,11 +10,11 @@ public class CourseDetailedDto {
     private String name;
     private String description;
     private Set<TopicBaseDto> topics;
-    private Set<GroupBaseDto> groups;
+    private Set<GroupShortDto> groups;
 
     // TODO: teacher base dto from feign request
     /*private TeacherBaseDto teacherDto;*/
-    public CourseDetailedDto(String name, String description, Set<TopicBaseDto> topics, Set<GroupBaseDto> groups) {
+    public CourseDetailedDto(String name, String description, Set<TopicBaseDto> topics, Set<GroupShortDto> groups) {
         this.name = name;
         this.description = description;
         this.topics = topics;
@@ -45,11 +45,11 @@ public class CourseDetailedDto {
         this.topics = topics;
     }
 
-    public Set<GroupBaseDto> getGroups() {
+    public Set<GroupShortDto> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<GroupBaseDto> groups) {
+    public void setGroups(Set<GroupShortDto> groups) {
         this.groups = groups;
     }
 }

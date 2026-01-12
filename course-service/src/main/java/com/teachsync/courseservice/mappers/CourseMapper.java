@@ -1,11 +1,11 @@
 package com.teachsync.courseservice.mappers;
 
 import com.teachsync.courseservice.domain.Course;
-import com.teachsync.courseservice.domain.Topic;
 import com.teachsync.courseservice.dto_s.courses.CourseBaseDto;
 import com.teachsync.courseservice.dto_s.courses.CourseCreateDto;
 import com.teachsync.courseservice.dto_s.courses.CourseDetailedDto;
-import com.teachsync.courseservice.dto_s.groups.GroupBaseDto;
+import com.teachsync.courseservice.dto_s.courses.CourseShortDto;
+import com.teachsync.courseservice.dto_s.groups.GroupShortDto;
 import com.teachsync.courseservice.dto_s.topics.TopicBaseDto;
 
 import java.util.Set;
@@ -29,9 +29,13 @@ public class CourseMapper {
 
     public static CourseDetailedDto mapToDetailedDto(Course course){
         Set<TopicBaseDto> topicBaseDtoSet = course.getTopics().stream().map(topic -> new TopicBaseDto(topic.getName())).collect(Collectors.toSet());
-        Set<GroupBaseDto> groupBaseDtoSet = course.getGroups().stream().map(group -> new GroupBaseDto(group.getName())).collect(Collectors.toSet());
+        Set<GroupShortDto> groupShortDtoSet = course.getGroups().stream().map(group -> new GroupShortDto(group.getName())).collect(Collectors.toSet());
         return new CourseDetailedDto(
-                course.getName(), course.getDescription(), topicBaseDtoSet, groupBaseDtoSet
+                course.getName(), course.getDescription(), topicBaseDtoSet, groupShortDtoSet
         );
+    }
+
+    public static CourseShortDto mapToShortDto(Course course){
+        return new CourseShortDto(course.getId(), course.getName());
     }
 }

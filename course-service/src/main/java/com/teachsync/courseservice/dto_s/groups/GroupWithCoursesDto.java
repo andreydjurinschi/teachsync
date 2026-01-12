@@ -1,19 +1,21 @@
 package com.teachsync.courseservice.dto_s.groups;
 
-import java.time.LocalDate;
+import com.teachsync.courseservice.dto_s.courses.CourseShortDto;
 
-public class GroupBaseDto {
+import java.time.LocalDate;
+import java.util.Set;
+
+public class GroupWithCoursesDto {
     private String name;
     private LocalDate date;
     private int capacity;
+    private Set<CourseShortDto> courses;
 
-    public GroupBaseDto(String name, LocalDate date, int capacity) {
+    public GroupWithCoursesDto(String name, LocalDate date, int capacity, Set<CourseShortDto> courses) {
         this.name = name;
         this.date = date;
         this.capacity = capacity;
-    }
-
-    public GroupBaseDto() {
+        this.courses = courses;
     }
 
     public String getName() {
@@ -38,5 +40,13 @@ public class GroupBaseDto {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public Set<CourseShortDto> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<CourseShortDto> courses) {
+        this.courses = courses;
     }
 }
