@@ -1,4 +1,4 @@
-package com.teachsync.interaction;
+package com.teachsync.interaction.clients;
 
 import com.teachsync.interaction.requests.CourseBaseInfoRequest;
 import org.springframework.cloud.openfeign.FeignClient;

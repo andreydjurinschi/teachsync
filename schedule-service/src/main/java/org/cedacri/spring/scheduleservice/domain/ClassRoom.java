@@ -16,15 +16,17 @@ public class ClassRoom {
     private String name;
     @Column(nullable = false)
     private Integer capacity;
-
+    @Column(name = "photo_url")
+    private String photoUrl;
     // relations
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "classRoom")
     private Set<Schedule> schedules = new HashSet<>();
 
 
-    public ClassRoom(String name, Integer capacity) {
+    public ClassRoom(String name, Integer capacity, String photoUrl) {
         this.name = name;
         this.capacity = capacity;
+        this.photoUrl = photoUrl;
     }
 
     public ClassRoom() {
@@ -61,5 +63,13 @@ public class ClassRoom {
 
     public void setSchedules(Set<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

@@ -1,7 +1,7 @@
 package com.teachsync.service;
 
 import com.teachsync.domain.User;
-import com.teachsync.interaction.CourseClient;
+import com.teachsync.interaction.clients.CourseClient;
 import com.teachsync.interaction.requests.CourseBaseInfoRequest;
 import com.teachsync.dto.feign.UserWithCoursesDto;
 import com.teachsync.mapper.UserMapper;

@@ -2,10 +2,10 @@ package com.teachsync.courseservice.services.domain;
 
 import com.teachsync.courseservice.domain.Course;
 import com.teachsync.courseservice.dto_s.courses.CourseDetailedDto;
-import com.teachsync.courseservice.interaction.UserClient;
+import com.teachsync.courseservice.interaction.feign.clients.UserClient;
 import com.teachsync.courseservice.mappers.CourseMapper;
 import com.teachsync.courseservice.repositories.CourseRepository;
-import com.teachsync.courseservice.interaction.requests.feign.TeacherCheckResponse;
+import com.teachsync.courseservice.interaction.feign.requests.TeacherCheckResponse;
 import com.teachsync.courseservice.dto_s.courses.CourseUpdateDto;
 import com.teachsync.courseservice.dto_s.courses.CourseBaseDto;
 import com.teachsync.courseservice.dto_s.courses.CourseCreateDto;

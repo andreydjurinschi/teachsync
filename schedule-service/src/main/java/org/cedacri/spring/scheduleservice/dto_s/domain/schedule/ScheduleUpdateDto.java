@@ -1,7 +1,6 @@
 package org.cedacri.spring.scheduleservice.dto_s.domain.schedule;
 
 import org.cedacri.spring.scheduleservice.domain.WeekDays;
-import org.cedacri.spring.scheduleservice.dto_s.domain.class_room.ClassRoomBaseDto;
 import org.cedacri.spring.scheduleservice.dto_s.feign.GroupCourseDto;
 import org.cedacri.spring.scheduleservice.dto_s.feign.TeacherDto;
 
@@ -14,15 +13,15 @@ public class ScheduleUpdateDto {
     private Set<WeekDays> weekDays;
     private GroupCourseDto groupCourseId;
     private TeacherDto teacherId;
-    private ClassRoomBaseDto dto;
+    private Integer classRoomBaseDto;
 
-    public ScheduleUpdateDto(LocalTime startTime, LocalTime endTime, Set<WeekDays> weekDays, GroupCourseDto groupCourseId, TeacherDto teacherId, ClassRoomBaseDto dto) {
+    public ScheduleUpdateDto(LocalTime startTime, LocalTime endTime, Set<WeekDays> weekDays, GroupCourseDto groupCourseId, TeacherDto teacherId, Integer classRoomBaseDto) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.weekDays = weekDays;
         this.groupCourseId = groupCourseId;
         this.teacherId = teacherId;
-        this.dto = dto;
+        this.classRoomBaseDto = classRoomBaseDto;
     }
 
     public LocalTime getStartTime() {
@@ -65,11 +64,11 @@ public class ScheduleUpdateDto {
         this.teacherId = teacherId;
     }
 
-    public ClassRoomBaseDto getDto() {
-        return dto;
+    public Integer getClassRoomBaseDto() {
+        return classRoomBaseDto;
     }
 
-    public void setDto(ClassRoomBaseDto dto) {
-        this.dto = dto;
+    public void setClassRoomBaseDto(Integer classRoomBaseDto) {
+        this.classRoomBaseDto = classRoomBaseDto;
     }
 }

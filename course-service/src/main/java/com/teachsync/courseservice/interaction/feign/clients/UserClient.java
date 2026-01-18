@@ -1,6 +1,6 @@
-package com.teachsync.courseservice.interaction;
+package com.teachsync.courseservice.interaction.feign.clients;
 
-import com.teachsync.courseservice.interaction.requests.feign.TeacherCheckResponse;
+import com.teachsync.courseservice.interaction.feign.requests.TeacherCheckResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

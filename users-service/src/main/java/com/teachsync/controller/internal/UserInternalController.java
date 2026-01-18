@@ -1,6 +1,7 @@
 package com.teachsync.controller.internal;
 
 import com.teachsync.domain.Role;
+import com.teachsync.interaction.responses.feign.TeacherBaseInfoForScheduleServiceResponse;
 import com.teachsync.interaction.responses.feign.TeacherCheckResponse;
 import com.teachsync.dto.UserBaseDto;
 import com.teachsync.service.UserService;
@@ -24,6 +25,14 @@ public class UserInternalController {
         UserBaseDto user = userService.findById(id);
         return new TeacherCheckResponse(
                 user.getRole() == Role.TEACHER
+        );
+    }
+
+    @GetMapping("/{id}")
+    public TeacherBaseInfoForScheduleServiceResponse baseInfoForScheduleServiceResponse(@PathVariable Long id){
+        UserBaseDto user = userService.findById(id);
+        return new TeacherBaseInfoForScheduleServiceResponse(
+                user.getId(), user.getFullName(), user.getEmail()
         );
     }
 }

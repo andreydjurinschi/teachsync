@@ -2,9 +2,9 @@ package org.cedacri.spring.scheduleservice.dto_s.domain.schedule;
 
 
 import org.cedacri.spring.scheduleservice.dto_s.domain.class_room.ClassRoomBaseDto;
-import org.cedacri.spring.scheduleservice.dto_s.feign.GroupCourseDto;
 import org.cedacri.spring.scheduleservice.domain.WeekDays;
-import org.cedacri.spring.scheduleservice.dto_s.feign.TeacherDto;
+import org.cedacri.spring.scheduleservice.interation.feign.requests.GroupCourseBaseInfoRequest;
+import org.cedacri.spring.scheduleservice.interation.feign.requests.TeacherBaseInfoRequest;
 
 import java.time.LocalTime;
 import java.util.Set;
@@ -14,18 +14,18 @@ public class ScheduleBaseDto {
     private LocalTime startTime;
     private LocalTime endTime;
     private Set<WeekDays> weekDays;
-    private GroupCourseDto groupCourseId;
-    private TeacherDto teacherId;
-    private ClassRoomBaseDto dto;
+    private GroupCourseBaseInfoRequest groupCourseDto;
+    private TeacherBaseInfoRequest teacherDto;
+    private ClassRoomBaseDto classRoomBaseDto;
 
-    public ScheduleBaseDto(Long id, LocalTime startTime, LocalTime endTime, Set<WeekDays> weekDays, GroupCourseDto groupCourseId, TeacherDto teacherId, ClassRoomBaseDto dto) {
+    public ScheduleBaseDto(Long id, LocalTime startTime, LocalTime endTime, Set<WeekDays> weekDays, GroupCourseBaseInfoRequest groupCourseDto, TeacherBaseInfoRequest teacherDto, ClassRoomBaseDto classRoomBaseDto) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.weekDays = weekDays;
-        this.groupCourseId = groupCourseId;
-        this.teacherId = teacherId;
-        this.dto = dto;
+        this.groupCourseDto = groupCourseDto;
+        this.teacherDto = teacherDto;
+        this.classRoomBaseDto = classRoomBaseDto;
     }
 
     public Long getId() {
@@ -60,27 +60,27 @@ public class ScheduleBaseDto {
         this.weekDays = weekDays;
     }
 
-    public GroupCourseDto getGroupCourseId() {
-        return groupCourseId;
+    public GroupCourseBaseInfoRequest getGroupCourseDto() {
+        return groupCourseDto;
     }
 
-    public void setGroupCourseId(GroupCourseDto groupCourseId) {
-        this.groupCourseId = groupCourseId;
+    public void setGroupCourseDto(GroupCourseBaseInfoRequest groupCourseDto) {
+        this.groupCourseDto = groupCourseDto;
     }
 
-    public TeacherDto getTeacherId() {
-        return teacherId;
+    public TeacherBaseInfoRequest getTeacherDto() {
+        return teacherDto;
     }
 
-    public void setTeacherId(TeacherDto teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacherDto(TeacherBaseInfoRequest teacherDto) {
+        this.teacherDto = teacherDto;
     }
 
-    public ClassRoomBaseDto getDto() {
-        return dto;
+    public ClassRoomBaseDto getClassRoomBaseDto() {
+        return classRoomBaseDto;
     }
 
-    public void setDto(ClassRoomBaseDto dto) {
-        this.dto = dto;
+    public void setClassRoomBaseDto(ClassRoomBaseDto classRoomBaseDto) {
+        this.classRoomBaseDto = classRoomBaseDto;
     }
 }
