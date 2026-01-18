@@ -31,9 +31,9 @@ public class CourseInternalController {
         return ResponseEntity.status(HttpStatus.OK).body(courseService.getAllForUser(id));
     }
 
-    @GetMapping("/{courseId}/group/{groupId}")
+    @GetMapping("/group/{groupCourseId}")
     public ResponseEntity<GroupCourseResponseForScheduleService>
-           getGroupWithCourseForScheduleService(@PathVariable("groupId")Long groupId, @PathVariable("courseId")Long courseId){
-        return ResponseEntity.ok(responseService.getGroupCourse(groupId, courseId));
+           getGroupWithCourseForScheduleService(@PathVariable("groupCourseId")Long groupCourseId){
+        return ResponseEntity.ok(responseService.getGroupCourse(groupCourseId));
     }
 }

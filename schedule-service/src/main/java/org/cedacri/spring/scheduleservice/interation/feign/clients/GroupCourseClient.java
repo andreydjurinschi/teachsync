@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "course-service" ,url = "http://localhost:8081/internal/teachsync/course")
 public interface GroupCourseClient {
-    @GetMapping("/{courseId}/group/{groupId}")
-    GroupCourseBaseInfoRequest groupCourseBaseInfoRequest(@PathVariable("groupId")Long groupId, @PathVariable("courseId")Long courseId);
+    @GetMapping("/group/{groupCourseId}")
+    GroupCourseBaseInfoRequest groupCourseBaseInfoRequest(@PathVariable("groupCourseId")Long groupCourseId);
 }

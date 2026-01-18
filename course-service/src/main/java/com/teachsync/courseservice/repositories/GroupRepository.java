@@ -18,14 +18,6 @@ public interface GroupRepository extends JpaRepository<Group, Long> {
     @Query(nativeQuery = true, value = "insert into GROUP_COURSES (group_id, course_id) VALUES ( :group_id, :course_id )")
     void assignGroupToCourse(@Param("group_id") Long groupId, @Param("course_id") Long courseId);
 
-    @Query("""
-        select g from Group g
-        join g.courses c
-        where g.id = :groupId
-          and c.id = :courseId
-    """)
-    Group findByGroupIdAndCourseId(@Param("groupId") Long groupId,
-                                             @Param("courseId") Long courseId);
 
 
 }

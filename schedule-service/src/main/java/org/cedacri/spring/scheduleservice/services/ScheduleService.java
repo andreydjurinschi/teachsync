@@ -38,7 +38,7 @@ public class ScheduleService {
         List<ScheduleBaseDto> baseDtos = new ArrayList<>();
         for(var el : all){
             TeacherBaseInfoRequest teacherBaseInfoRequest = teacherClient.requestForUserFromUserService(el.getTeacherId());
-            GroupCourseBaseInfoRequest groupCourseBaseInfoRequest = groupCourseClient.groupCourseBaseInfoRequest(1L, 2L);
+            GroupCourseBaseInfoRequest groupCourseBaseInfoRequest = groupCourseClient.groupCourseBaseInfoRequest(el.getGroupCourseId());
             ScheduleBaseDto baseDto = ScheduleMapper.mapToBaseDto(el);
             baseDto.setTeacherDto(teacherBaseInfoRequest);
             baseDto.setGroupCourseDto(groupCourseBaseInfoRequest);
