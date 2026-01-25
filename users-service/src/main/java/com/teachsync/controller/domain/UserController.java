@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/teachsync/users")
+@CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/teachsync/users")
 public class UserController {
     private final UserService service;
 
