@@ -7,13 +7,17 @@
         <th class="px-4 py-3 text-left">ID</th>
         <th class="px-4 py-3 text-left">Full Name</th>
         <th class="px-4 py-3 text-left">Email</th>
+        <th class="px-4 py-3 text-left">Role</th>
+        <th class="px-4 py-3 text-left">Registered At</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users()" class="hover:bg-slate-100">
+      <tr *ngFor="let user of users()" class="hover:bg-slate-100" [routerLink]="['/users', user.id]">
         <td class="px-4 py-3">{{ user.id }}</td>
         <td class="px-4 py-3">{{ user.fullName }}</td>
         <td class="px-4 py-3">{{ user.email }}</td>
+        <td class="px-4 py-3">{{ user.role }}</td>
+        <td class="px-4 py-3">{{ user.registeredAt }}</td>
       </tr>
     </tbody>
   </table>

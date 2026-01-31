@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { User } from '../models/user.model';
+import { User } from '../models/users/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,12 @@ export class UserService{
     return this.http.get<User[]>(`${this.apiUrl}/all`);
   }
 
-  getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${id}`);
-  }
+    getById(id: number): Observable<User> {
+      return this.http.get<User>(`${this.apiUrl}/${id}`);
+    }
 
+    update(id: number, user: Partial<User>): Observable<User> {
+      return this.http.put<User>(`${this.apiUrl}/edit/${id}`, user);
+    }
+      
 }

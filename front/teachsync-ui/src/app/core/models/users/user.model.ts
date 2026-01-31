@@ -1,5 +1,5 @@
 
-/* user model dto example for sers list*/ 
+/* user model dto example for users list*/ 
 export interface User {
     id: number;
     fullName: string;
