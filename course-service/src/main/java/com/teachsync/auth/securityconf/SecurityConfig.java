@@ -41,6 +41,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/teachsync/courses/**").hasAnyRole("ADMIN", "MANAGER", "TEACHER");
                     auth.requestMatchers("/teachsync/groups/**").hasAnyRole("ADMIN", "MANAGER", "TEACHER");
                     auth.requestMatchers("/teachsync/categories/**").hasAnyRole("ADMIN", "MANAGER", "TEACHER");
+                    auth.requestMatchers("/teachsync/topics/**").hasAnyRole("ADMIN", "MANAGER", "TEACHER");
                     auth.anyRequest().authenticated();
                 })
                 .addFilterBefore(jwtAuthentificationFilter, UsernamePasswordAuthenticationFilter.class)
