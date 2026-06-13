@@ -1,6 +1,7 @@
 package com.teachsync.controllers.advice;
 
 import com.teachsync.exceptions.ScheduleConflictException;
+import feign.FeignException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -41,5 +42,11 @@ public class CustomExceptionHandlerController {
     public ResponseEntity<Map<String, String>> handleIllegal(IllegalArgumentException e) {
         return ResponseEntity.badRequest()
                 .body(Map.of("message", e.getMessage()));
+    }
+
+    @ExceptionHandler(FeignException.class)
+    public ResponseEntity<Map<String, String>> handleFeignUnavailable(FeignException e) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(Map.of("message", "Dependent service is temporarily unavailable"));
     }
 }

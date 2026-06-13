@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NotificationItem, NotificationPreference, UserActivity } from '../models/notifications/notification.model';
+import { ServiceAvailabilityService } from './service-availability.service';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
@@ -14,7 +15,11 @@ export class NotificationService {
   refresh$ = this.refreshSubject.asObservable();
   realtime$ = this.realtimeSubject.asObservable();
 
-  constructor(private http: HttpClient, private zone: NgZone) {}
+  constructor(
+    private http: HttpClient,
+    private zone: NgZone,
+    private availability: ServiceAvailabilityService,
+  ) {}
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('jwt_token');
@@ -73,6 +78,11 @@ export class NotificationService {
         this.triggerRefresh();
       });
     });
+    this.eventSource.onerror = () => {
+      this.zone.run(() => {
+        this.availability.showUnavailable('Notification service', true);
+      });
+    };
   }
 
   disconnectRealtime(): void {
