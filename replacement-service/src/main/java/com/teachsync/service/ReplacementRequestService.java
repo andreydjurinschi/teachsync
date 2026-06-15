@@ -85,7 +85,9 @@ public class ReplacementRequestService {
             publishStatusChangedToRequester(saved, groupCourse, schedule, "Свободные преподаватели не найдены", "Система не нашла свободных преподавателей с подходящей специализацией.", REPLACEMENTS_URL);
             return enrich(saved);
         }
-
+        candidates.forEach(t-> {
+            System.out.println("Свободные учителя: " + t.getFullName() + " " + t.getEmail());
+        });
         for (TeacherBaseInfoRequest candidate : candidates) {
             responseRepository.save(new ReplacementResponse(saved, ResponseStatus.PENDING, candidate.getId()));
             eventProducer.publishReplacementRequested(new ReplacementRequestedEvent(saved.getId(), teacherRequested, candidate.getId(), schedule.getId(), groupCourse.getCourseName(), groupCourse.getGroupName(), schedule.getClassRoomBaseDto() == null ? null : schedule.getClassRoomBaseDto().getName(), saved.getLessonDate(), schedule.getStartTime(), schedule.getEndTime(), saved.getReason()));

@@ -16,7 +16,6 @@ import { RouterLink } from '@angular/router';
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a routerLink="/profile" class="app-btn-primary">На главную</a>
-          <a routerLink="/login" class="app-btn-secondary">Сменить аккаунт</a>
         </div>
       </div>
     </section>

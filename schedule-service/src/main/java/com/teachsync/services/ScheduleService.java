@@ -334,8 +334,6 @@ public class ScheduleService {
 
         findClassRoomConflicts(dto, classRoom);
         findTeacherConflicts(dto, groupCourse.getTeacherId());
-        // todo
-        //findGroupCourseConflicts(dto, groupCourse);
 
         Schedule schedule = new Schedule(
                 dto.getStartTime(), dto.getEndTime(),

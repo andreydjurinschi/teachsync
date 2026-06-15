@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-// todo consul discovery
-
 @FeignClient(name = "course-service", url = "${teachsync.services.courses.url:http://localhost:8081/internal/courses}")
 public interface GroupCourseClient {
     @GetMapping("/group/{groupCourseId}")

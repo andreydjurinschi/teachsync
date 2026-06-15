@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//todo: service discovery
-
 /**
  * feign клиент
  */
@@ -26,6 +24,6 @@ public interface UserClient {
     @GetMapping("/course_service/{id}")
     TeacherRequest getTeacher(@PathVariable Long id);
 
-    @PostMapping("/batch")                              // ← POST, путь только /batch
-    List<TeacherRequest> getTeachersByIds(@RequestBody List<Long> ids); // ← @RequestBody
+    @PostMapping("/batch")
+    List<TeacherRequest> getTeachersByIds(@RequestBody List<Long> ids);
 }

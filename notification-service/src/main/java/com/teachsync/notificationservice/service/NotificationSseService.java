@@ -132,7 +132,6 @@ public class NotificationSseService {
                 connection.emitter().complete();
             }
         } catch (Exception ignored) {
-            // The client may already be gone; this is a normal SSE disconnect path.
         }
     }
 
